@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pluto Medical</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Expanded Blue Ingredients */
+      --primary: #4a63f0;       /* Original Blue */
+      --primary-dark: #2a43c0;  /* Deeper Blue for text/hover */
+      --accent: #0ea5e9;        /* Medical Cyan/Teal */
+      --bg-light-blue: #f0f7ff; /* Very faint blue tint for backgrounds */
+      --white: #ffffff;
+      --text-main: #1e293b;
+      --text-gray: #64748b;
+      
+      /* Social Brand Colors */
+      --whatsapp: #25D366;
+      --facebook: #1877F2;
+
+      /* Gradients */
+      --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text-main);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary-dark);
+    }
+
+    .logo img {
+      height: 42px;
+    }
+
+    .lang-btn {
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(74, 99, 240, 0.3);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--bg-light-blue);
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: var(--brand-gradient);
+      opacity: 0.05;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 22px;
+      color: var(--primary-dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+
+    p {
+      color: var(--text-gray);
+      font-size: 17px;
+      max-width: 650px;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      font-weight: 600;
+      color: var(--primary-dark);
+      border: 1px solid #f1f5f9;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px rgba(74, 99, 240, 0.15);
+      border-color: var(--accent);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--brand-gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* Contact Section Styling */
+    .dark-section {
+      background: #111827;
+      color: var(--white);
+    }
+    
+    .dark-section h2 {
+      color: var(--white);
+    }
+    
+    .dark-section p {
+      color: #9ca3af;
+    }
+
+    /* Social Buttons Styling */
+    .social-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      color: white;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .social-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .social-btn.whatsapp {
+      background-color: var(--whatsapp);
+    }
+
+    .social-btn.facebook {
+      background-color: var(--facebook);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: var(--primary-dark);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-grid img {
+        margin: 20px auto;
+      }
+      p {
+        margin: 0 auto;
+      }
+      h2::after {
+        margin: 8px auto 0 auto;
+      }
+      .social-row {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <img src="plutologo.png" alt="Pluto Medical Logo" onerror="this.style.display='none'"/>
+      <span data-en="Pluto Medical" data-ar="بلوتو للمستلزمات الطبية">Pluto Medical</span>
+    </div>
+    <button class="lang-btn" onclick="toggleLang()">AR</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 data-en="Pluto for Medical Devices, Equipment and Supplies" data-ar="بلوتو للاجهزة والمعدات والمستلزمات الطبية">Pluto Medical</h1>
+      <p data-en="A trusted partner in importing medical equipment and supplies, and equipping hospitals, centers, and clinics with high quality and professionalism." data-ar="شريك موثوق في استيراد المعدات والمستلزمات الطبية وتجهيز المستشفيات والمراكز والمصحات بجودة عالية واحترافية."></p>
+    </div>
+    <img src="plutologoo.png" alt="Medical Equipment" style="max-width:100%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));">
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 data-en="About Us" data-ar="من نحن">About Us</h2>
+    <p data-en="Pluto Medical specializes in importing hospital and medical equipment from certified international suppliers. We aim to support healthcare institutions with reliable products that meet global medical standards." data-ar="تتخصص شركة بلوتو في استيراد المعدات والمستلزمات الطبية وتجهيز المستشفيات من موردين دوليين معتمدين، مع الالتزام بأعلى المعايير الطبية العالمية."></p>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container">
+    <h2 data-en="Products & Services" data-ar="المنتجات والخدمات">Products & Services</h2>
+    <div class="card-grid">
+      <div class="card" data-en="Diagnostic Equipment" data-ar="أجهزة التشخيص"></div>
+      <div class="card" data-en="Hospital Furniture" data-ar="أثاث المستشفيات"></div>
+      <div class="card" data-en="Surgical Instruments" data-ar="الأدوات الجراحية"></div>
+      <div class="card" data-en="Laboratory Equipment" data-ar="معدات المختبرات"></div>
+      <div class="card" data-en="Medical Disposables" data-ar="المستهلكات الطبية"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 data-en="Why Choose Us" data-ar="لماذا تختارنا">Why Choose Us</h2>
+    <div class="card-grid">
+      <div class="card" data-en="Certified international suppliers" data-ar="موردون دوليون معتمدون"></div>
+      <div class="card" data-en="High quality and reliability" data-ar="جودة عالية وموثوقية"></div>
+      <div class="card" data-en="After-sales service and technical support" data-ar="خدمة ما بعد البيع ودعم فني"></div>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container">
+    <h2 data-en="Vision & Mission" data-ar="الرؤية والرسالة">Vision & Mission</h2>
+    <p data-en="Our vision is to become a leading name in medical equipment importing, while our mission is to empower healthcare providers with advanced, safe, and dependable solutions." data-ar="رؤيتنا أن نكون من الأسماء الرائدة في استيراد المعدات الطبية، ورسالتنا دعم القطاع الصحي بحلول آمنة ومتطورة وموثوقة."></p>
+  </div>
+</section>
+
+<section class="dark-section">
+  <div class="container">
+    <h2 data-en="Contact Us" data-ar="تواصل معنا">Contact Us</h2>
+    <p data-en="Phone: +218 924 092 109" data-ar="الهاتف: 109 092 924 +218"></p>
+    <p data-en="Email: plutomedical@gmail.com" data-ar="البريد الإلكتروني: plutomedical@gmail.com"></p>
+    <p data-en="Location: BENGHAZI, LIBYA" data-ar="الموقع:بنغازي ,ليبيا"></p>
+
+    <div class="social-row">
+        <a href="https://wa.me/218924092109" target="_blank" class="social-btn whatsapp">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            WhatsApp
+        </a>
+
+        <a href="https://www.facebook.com/share/188XnbnGEx/?mibextid=wwXIfr" target="_blank" class="social-btn facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036c-2.148 0-2.797 1.603-2.797 2.898v1.074h3.44l-.615 3.672h-2.825v7.98c5.088-.711 9.002-5.048 9.002-10.322 0-5.772-4.679-10.452-10.452-10.452S1.556 5.38 1.556 11.152c0 5.275 3.915 9.612 9.002 10.322l-1.457 2.217Z"/>
+            </svg>
+            Facebook
+        </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Pluto Medical. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  let isArabic = false;
+
+  function toggleLang() {
+    isArabic = !isArabic;
+    document.documentElement.lang = isArabic ? 'ar' : 'en';
+    document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      // Small fade effect when switching language
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+        el.style.opacity = '1';
+      }, 200);
+    });
+
+    document.querySelector('.lang-btn').textContent = isArabic ? 'EN' : 'AR';
+  }
+
+  // Add transition to all text elements for smooth language switch
+  document.addEventListener("DOMContentLoaded", () => {
+      const textElements = document.querySelectorAll('[data-en]');
+      textElements.forEach(el => {
+          el.style.transition = "opacity 0.3s ease";
+      });
+  });
+</script>
+
+</body>
+</html>
