@@ -412,6 +412,48 @@
     © 2026 Pluto Medical. All rights reserved
   </div>
 </footer>
+<script>
+  let isArabic = false;
+
+  // دالة لتحديث النصوص بناءً على اللغة الحالية
+  function updateContent() {
+    document.documentElement.lang = isArabic ? 'ar' : 'en';
+    document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-en]').forEach(el => {
+      // نضع النص الإنجليزي أو العربي داخل العنصر
+      el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+    });
+
+    const langBtn = document.querySelector('.lang-btn');
+    if (langBtn) {
+      langBtn.textContent = isArabic ? 'EN' : 'AR';
+    }
+  }
+
+  // دالة تبديل اللغة عند الضغط على الزر
+  function toggleLang() {
+    isArabic = !isArabic;
+    
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        updateContent();
+        el.style.opacity = '1';
+      }, 200);
+    });
+  }
+
+  // تشغيل التحديث فور تحميل الصفحة لتظهر النصوص مباشرة
+  document.addEventListener("DOMContentLoaded", () => {
+      updateContent(); 
+      
+      const textElements = document.querySelectorAll('[data-en]');
+      textElements.forEach(el => {
+          el.style.transition = "opacity 0.3s ease";
+      });
+  });
+</script>
 
 </body>
 
