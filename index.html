@@ -413,35 +413,6 @@
   </div>
 </footer>
 
-<script>
-  let isArabic = false;
-
-  function toggleLang() {
-    isArabic = !isArabic;
-    document.documentElement.lang = isArabic ? 'ar' : 'en';
-    document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
-
-    document.querySelectorAll('[data-en]').forEach(el => {
-      // Small fade effect when switching language
-      el.style.opacity = '0';
-      setTimeout(() => {
-        el.textContent = isArabic ? el.getAttribute('data-ar') : el.getAttribute('data-en');
-        el.style.opacity = '1';
-      }, 200);
-    });
-
-    document.querySelector('.lang-btn').textContent = isArabic ? 'EN' : 'AR';
-  }
-
-  // Add transition to all text elements for smooth language switch
-  document.addEventListener("DOMContentLoaded", () => {
-      const textElements = document.querySelectorAll('[data-en]');
-      textElements.forEach(el => {
-          el.style.transition = "opacity 0.3s ease";
-      });
-  });
-</script>
-
 </body>
 
 </html>
